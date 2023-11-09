@@ -1,17 +1,13 @@
 package com.andrevpc.java_api.model;
 
-import java.util.Date;
-
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
 
-@Data // Não precisa colocar o @Getter @Setter
-@AllArgsConstructor // Gera construtor com todos os inputs
+@Data // Put @Getter @Setter automatically
+@AllArgsConstructor // Generate constructor with all the fields
 @Document("user")
 public class UserModel {
     @Id

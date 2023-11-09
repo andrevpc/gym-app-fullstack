@@ -1,0 +1,11 @@
+Extensions
+{
+	Spring Boot
+	Thunder Client
+	Extension Pack for Java
+}
+
+MongoDB information: target\classes\application.properties
+
+To run: src\main\java\com\andrevpc\java_api\JavaApiApplication.java
+or:   & 'C:\Users\Aluno\.vscode\extensions\redhat.java-1.15.0-win32-x64\jre\17.0.6-win32-x86_64\bin\java.exe' '@C:\Users\Aluno\AppData\Local\Temp\cp_6z1dhfjr2eq3la3ncw3xy4zr4.argfile' 'com.andrevpc.java_api.JavaApiApplication'
