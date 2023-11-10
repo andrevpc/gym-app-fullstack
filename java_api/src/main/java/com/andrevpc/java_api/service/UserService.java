@@ -18,24 +18,20 @@ public class UserService {
         return this.userRepository.save(userModel);
     }
 
-    public void save(String id, String name, short age) {
-        this.userRepository.save(new UserModel(id, name, age));
+    public void save(String id, String email, String password, String name,
+            Boolean isTrainer, List<String> Plan, List<String> Users) {
+        this.userRepository.save(new UserModel(id, email, password, name, isTrainer, Plan, Users));
     }
 
     public List<UserModel> findAll() {
         return (List<UserModel>) this.userRepository.findAll();
     }
 
-    public List<UserModel> findByName(String name) {
-        return (List<UserModel>) this.userRepository.findByName(name);
-    }
-
-    public List<UserModel> findByAgeAndName(short age, String name) {
-        return (List<UserModel>) this.userRepository.findByAgeAndName(age, name);
+    public List<UserModel> findByEmail(String email) {
+        return (List<UserModel>) this.userRepository.findByEmail(email);
     }
 
     public void delete(String id) {
         this.userRepository.deleteById(id);
     }
-
 }

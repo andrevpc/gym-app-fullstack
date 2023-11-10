@@ -1,7 +1,6 @@
 package com.andrevpc.java_api.controller;
 
 import java.util.List;
-import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,15 +28,9 @@ public class UserController {
         return listRes;
     }
 
-    @GetMapping("/{name}")
-    public List<UserModel> getUserByName(@PathVariable String name) {
-        List<UserModel> listRes = userService.findByName(name);
-        return listRes;
-    }
-
-    @GetMapping("/{age}/{name}")
-    public List<UserModel> getUserByAgeAndName(@PathVariable short age, @PathVariable String name) {
-        List<UserModel> listRes = userService.findByAgeAndName(age, name);
+    @GetMapping("/{email}")
+    public List<UserModel> getUserByEmail(@PathVariable String email) {
+        List<UserModel> listRes = userService.findByEmail(email);
         return listRes;
     }
 
@@ -48,12 +41,17 @@ public class UserController {
 
     @PutMapping("/{id}")
     public void putUser(@RequestBody UserModel newUser, @PathVariable String id) {
-        userService.save((String) id, (String) newUser.getName(), (short) newUser.getAge());
+        userService.save((String) id, 
+        (String) newUser.getEmail(), 
+        (String) newUser.getPassword(), 
+        (String) newUser.getName(), 
+        (Boolean) newUser.getIsTrainer(),
+        (List<String>) newUser.getPlan(), 
+        (List<String>) newUser.getUsers());
     }
 
     @DeleteMapping("/{id}")
     public void deleteUser(@PathVariable String id) {
         userService.delete(id);
     }
-
 }

@@ -1,5 +1,6 @@
 package com.andrevpc.java_api.model;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
@@ -11,9 +12,13 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Document("day")
-public class DayModel {
+public class HistoryOfPlansModel {
     @Id
     private String id;
 
-    private List<String> Exercises;
+    private String user;
+    private String trainer;
+    private LocalDate startDay;
+    private LocalDate endDay;
+    private List<String> plan;
 }

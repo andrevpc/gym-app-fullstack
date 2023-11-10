@@ -1,6 +1,6 @@
 package com.andrevpc.java_api.model;
 
-import java.util.List;
+import java.time.LocalDateTime;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -11,9 +11,12 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Document("day")
-public class DayModel {
+public class MeasureModel {
     @Id
     private String id;
 
-    private List<String> Exercises;
+    private String user;
+    private Float weight;
+    private Float height;
+    private LocalDateTime measuredAt;
 }
