@@ -14,7 +14,7 @@ import bgImg from '../../../assets/images/background.png'
 import logoImg from '../../../assets/images/logo.png'
 import { TouchableOpacity } from 'react-native-web';
 
-const LoginPage = () => {
+const LoginPage = (props) => {
     const [email, bindEmail, resetEmail] = useBind("")
     const [password, bindPassword, resetPassword] = useBind("")
 
@@ -49,7 +49,7 @@ const LoginPage = () => {
             </TouchableOpacity>
             <View style={styles.footerView}>
                 <Text style={styles.footerText}>Ainda não possui uma conta? </Text>
-                <Text style={styles.footerText} onPress={() => console.log("saa")}>Criar conta</Text>
+                <Text style={styles.footerText} onPress={() => props.navigation.navigate('register')}>Criar conta</Text>
             </View>
         </View>
     );

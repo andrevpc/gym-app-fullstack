@@ -4,6 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import LoginPage from './src/pages/login';
 import RegisterPage from './src/pages/register';
+import DaysPage from './src/pages/days';
+import DayPage from './src/pages/day';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -15,7 +17,14 @@ export default function App() {
             headerTransparent: true,
             headerShown: false
           }}
-          name="register" component={RegisterPage}
+          name="day" component={DayPage}
+        />
+        <Stack.Screen
+          options={{
+            headerTransparent: true,
+            headerShown: false
+          }}
+          name="days" component={DaysPage}
         />
         <Stack.Screen
           options={{
@@ -23,6 +32,13 @@ export default function App() {
             headerShown: false
           }}
           name="login" component={LoginPage}
+        />
+        <Stack.Screen
+          options={{
+            headerTransparent: true,
+            headerShown: false
+          }}
+          name="register" component={RegisterPage}
         />
       </Stack.Navigator>
     </NavigationContainer>
