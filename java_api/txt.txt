@@ -1,6 +1,6 @@
 Extensions
 {
-	Spring Boot
+	Spring Boot Extension Pack
 	Thunder Client
 	Extension Pack for Java
 }

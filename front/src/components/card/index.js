@@ -6,24 +6,19 @@ const Card = ({ title, body, img }) => {
 
     return (
         <View style={styles.card}>
-            <div style={{
-                display: "flex"
-            }}>
-                <Image
-                    source={img}
-                    style={styles.img}
-                />
-                <div style={{
-                    display: "flex",
-                    flexDirection: "column"
-                }}>
-                    <Text style={styles.cardTitle}>{title}</Text>
-                    <Text style={styles.cardBody}>{body}</Text>
-                    <TouchableOpacity style={styles.btn} title="Fazer" onPress={console.log("AA")}>
-                        <Text style={styles.btnTxt}>Fazer</Text>
-                    </TouchableOpacity>
-                </div>
-            </div>
+            <Image
+                source={img}
+                style={styles.img}
+            />
+            <View style={styles.info}>
+                <Text style={styles.cardTitle}>{title}</Text>
+                <Text style={styles.cardBody}>{body}</Text>
+            </View>
+            <View style={styles.btnContainer}>
+                <TouchableOpacity style={styles.btn} title="Fazer" onPress={console.log("AA")}>
+                    <Text style={styles.btnTxt}>Fazer</Text>
+                </TouchableOpacity>
+            </View>
         </View>
     );
 };

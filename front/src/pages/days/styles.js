@@ -2,10 +2,13 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        justifyContent: 'center',
+        width: '100vw',
+        display: 'flex',
         alignItems: 'center',
         backgroundColor: '#F5FCFF',
+        minHeight: '100vh',
+        gap: 18,
+        paddingTop: 20
     },
     card: {
         width: '80%',

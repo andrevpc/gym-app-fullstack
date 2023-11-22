@@ -25,6 +25,14 @@ public class UserModel implements UserDetails {
     private List<String> plan;
     private List<String> users;
 
+    public UserModel(String password, String email) {
+        this.password = password;
+        this.email = email;
+    }
+
+    public UserModel() {
+    }
+    
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return List.of(new SimpleGrantedAuthority("USER"));

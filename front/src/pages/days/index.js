@@ -6,10 +6,10 @@ import Card from '../../components/card';
 
 const DaysPage = () => {
     return (
-        <>
+        <View style={styles.container}>
             <Card title="Treino A" body="Peito e Tríceps" img={require("../../../assets/images/chest.webp")} />
             <Card title="Treino B" body="Costas e Bíceps" img={chestImg} />
-        </>
+        </View>
     );
 };
 

@@ -2,19 +2,18 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
     card: {
-        borderWidth: 1,
-        borderRadius: 2,
+        width: '90%',
         borderColor: '#ddd',
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: 10,
         borderRadius: 20,
-        backgroundColor: "#D9D9D9"
+        backgroundColor: "#D9D9D9",
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+        display: 'flex',
+        gap: 8
     },
     cardTitle: {
         fontSize: 18,
         fontWeight: 'bold',
-        paddingLeft: 5,
     },
     cardBody: {
         paddingLeft: 5,
@@ -22,7 +21,7 @@ const styles = StyleSheet.create({
     },
     img: {
         borderRadius: 20,
-        width: "305px",
+        width: '100%',
         height: "170px",
         flexShrink: "0",
     },
@@ -30,7 +29,14 @@ const styles = StyleSheet.create({
         backgroundColor: "white",
         width: "75px",
         height: "25px",
-        marginLeft: "200px"
+        borderRadius: 8
+    },
+    info: {
+        width: '100%',
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        
     }
 });
 
