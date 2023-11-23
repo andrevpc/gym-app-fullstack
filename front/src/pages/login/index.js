@@ -13,29 +13,50 @@ import useBind from "../../hooks/useBind";
 import bgImg from '../../../assets/images/background.png'
 import logoImg from '../../../assets/images/logo.png'
 import { TouchableOpacity } from 'react-native-web';
+import axios from "axios";
 
 const LoginPage = (props) => {
     const [email, bindEmail, resetEmail] = useBind("")
     const [password, bindPassword, resetPassword] = useBind("")
 
-    const handleLogin = () => {
-        console.log(email, password)
-    };
+    const resetAll = () => {
+        resetEmail()
+        resetPassword()
+    }
+
+    const handleLogin = (async () => {
+        const loginData = {
+            email: email,
+            password: password
+        };
+
+        try {
+            const res = await axios.post("http://localhost:8080/auth/login", loginData);
+            if (!res.data) {
+                return;
+            }
+            sessionStorage.setItem('token', res.data);
+            resetAll()
+            props.navigation.navigate('days')
+        } catch (error) {
+            setNotFound(true);
+        }
+    });
 
     return (
         <View style={styles.container}>
-        <ImageBackground
-            source={bgImg}
-            style={styles.backgroundImage}
-        />
-        <View style={styles.centerDiv} />
-        <Image
-            source={logoImg}
-            style={styles.img}
-        />
+            <ImageBackground
+                source={bgImg}
+                style={styles.backgroundImage}
+            />
+            <View style={styles.centerDiv} />
+            <Image
+                source={logoImg}
+                style={styles.img}
+            />
             <TextInput
                 style={styles.input}
-                placeholder="Email" 
+                placeholder="Email"
                 {...bindEmail}
             />
             <TextInput

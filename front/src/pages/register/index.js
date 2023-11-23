@@ -20,7 +20,6 @@ const RegisterPage = (props) => {
     const [password, bindPassword, resetPassword] = useBind("")
 
     const handleRegister = () => {
-        console.log(email, password)
     };
 
     return (

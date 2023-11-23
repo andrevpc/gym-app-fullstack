@@ -17,6 +17,13 @@ export default function App() {
             headerTransparent: true,
             headerShown: false
           }}
+          name="login" component={LoginPage}
+        />
+        <Stack.Screen
+          options={{
+            headerTransparent: true,
+            headerShown: false
+          }}
           name="day" component={DayPage}
         />
         <Stack.Screen
@@ -25,13 +32,6 @@ export default function App() {
             headerShown: false
           }}
           name="days" component={DaysPage}
-        />
-        <Stack.Screen
-          options={{
-            headerTransparent: true,
-            headerShown: false
-          }}
-          name="login" component={LoginPage}
         />
         <Stack.Screen
           options={{
