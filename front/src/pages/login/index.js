@@ -39,7 +39,6 @@ const LoginPage = (props) => {
             resetAll()
             props.navigation.navigate('days')
         } catch (error) {
-            setNotFound(true);
         }
     });
 

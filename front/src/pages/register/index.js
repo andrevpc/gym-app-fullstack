@@ -19,8 +19,26 @@ const RegisterPage = (props) => {
     const [username, bindUsername, resetUsername] = useBind("")
     const [password, bindPassword, resetPassword] = useBind("")
 
-    const handleRegister = () => {
-    };
+    const resetAll = () => {
+        resetEmail()
+        resetUsername()
+        resetPassword()
+    }
+
+    const handleRegister = (async () => {
+        const registerData = {
+            username: username,
+            email: email,
+            password: password
+        };
+
+        try {
+            const res = await axios.post("http://localhost:8080/user", registerData);
+            resetAll()
+            props.navigation.navigate('login')
+        } catch (error) {
+        }
+    });
 
     return (
         <View style={styles.container}>
