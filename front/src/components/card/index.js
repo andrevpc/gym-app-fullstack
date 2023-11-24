@@ -15,7 +15,7 @@ const Card = ({ title, body, img }) => {
                 <Text style={styles.cardBody}>{body}</Text>
             </View>
             <View style={styles.btnContainer}>
-                <TouchableOpacity style={styles.btn} title="Fazer" onPress={console.log("AA")}>
+                <TouchableOpacity style={styles.btn} title="Fazer" onPress={() => console.log("AA")}>
                     <Text style={styles.btnTxt}>Fazer</Text>
                 </TouchableOpacity>
             </View>

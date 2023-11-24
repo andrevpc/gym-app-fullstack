@@ -14,6 +14,6 @@ import lombok.Data;
 public class DayModel {
     @Id
     private String id;
-
+    private String Name;
     private List<String> Exercises;
 }

@@ -13,6 +13,7 @@ import useBind from "../../hooks/useBind";
 import bgImg from '../../../assets/images/background.png'
 import logoImg from '../../../assets/images/logo.png'
 import { TouchableOpacity } from 'react-native-web';
+import axios from 'axios';
 
 const RegisterPage = (props) => {
     const [email, bindEmail, resetEmail] = useBind("")
@@ -27,7 +28,7 @@ const RegisterPage = (props) => {
 
     const handleRegister = (async () => {
         const registerData = {
-            username: username,
+            name: username,
             email: email,
             password: password
         };
@@ -37,6 +38,7 @@ const RegisterPage = (props) => {
             resetAll()
             props.navigation.navigate('login')
         } catch (error) {
+            console.log(error)
         }
     });
 
@@ -67,7 +69,7 @@ const RegisterPage = (props) => {
                 {...bindPassword}
                 secureTextEntry
             />
-            <TouchableOpacity style={styles.btn} title="Entrar" onPress={handleRegister}>
+            <TouchableOpacity style={styles.btn} title="Entrar" onPress={() => handleRegister()}>
                 <Text style={styles.btnTxt}>Registrar</Text>
             </TouchableOpacity>
             <View style={styles.footerView}>

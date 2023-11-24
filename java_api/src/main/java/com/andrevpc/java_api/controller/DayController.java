@@ -42,7 +42,7 @@ public class DayController {
 
     @PutMapping("/{id}")
     public void putDay(@RequestBody DayModel newDay, @PathVariable String id) {
-        dayService.save((String) id, newDay.getExercises());
+        dayService.save((String) id, newDay.getName(), newDay.getExercises());
     }
 
     @DeleteMapping("/{id}")

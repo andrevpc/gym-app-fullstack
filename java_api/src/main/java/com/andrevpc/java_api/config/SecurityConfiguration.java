@@ -9,7 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
+import static org.springframework.security.config.Customizer.withDefaults;
 import com.andrevpc.java_api.filter.SecurityFilter;
 
 @Configuration
@@ -22,15 +22,18 @@ public class SecurityConfiguration {
     @Bean
     public SecurityFilterChain setSecurityFilterChain(final HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
-                .cors()
-                .and()
+                .cors(withDefaults())
                 .csrf(csrf -> csrf.disable())
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.GET, "/user").permitAll()
-                        .requestMatchers(HttpMethod.DELETE, "/user").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/user/*").permitAll()
                         .requestMatchers(HttpMethod.POST, "/user").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/day").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/day").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/exercise").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/exercise").permitAll()
                         .anyRequest()
                         .authenticated())
                 .addFilterBefore(this.securityFilter, UsernamePasswordAuthenticationFilter.class)

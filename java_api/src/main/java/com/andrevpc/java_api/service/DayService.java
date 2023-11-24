@@ -19,8 +19,8 @@ public class DayService {
         return this.dayRepository.save(dayModel);
     }
 
-    public void save(String id, List<String> exercises) {
-        this.dayRepository.save(new DayModel(id, exercises));
+    public void save(String id, String name, List<String> exercises) {
+        this.dayRepository.save(new DayModel(id, name, exercises));
     }
 
     public List<DayModel> findAll() {
