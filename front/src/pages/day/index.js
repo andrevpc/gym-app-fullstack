@@ -10,7 +10,7 @@ const DayPage = () => {
     return (
         <>
         <View style={styles.container}>
-            <Header pageName='Treino A' />  
+            <Header pageName='Treino A' />
             <CardExercise title="Supino Reto com Barra" img={require("../../../assets/images/legExtension.webp")} />
         </View>
         </>

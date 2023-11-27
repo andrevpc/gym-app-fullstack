@@ -29,7 +29,6 @@ public class AuthService implements UserDetailsService {
 
     public String createToken(UserModel user) {
         try {
-
             final var anAlgorithm = Algorithm.HMAC256(secret);
             final String aToken = JWT.create()
                     .withIssuer(issuer)
