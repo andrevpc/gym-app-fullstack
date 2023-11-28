@@ -6,42 +6,46 @@ import LoginPage from './src/pages/login';
 import RegisterPage from './src/pages/register';
 import DaysPage from './src/pages/days';
 import DayPage from './src/pages/day';
+import { Provider } from 'react-redux';
+import { store } from './src/redux/store';
 
 export default function App() {
   const Stack = createStackNavigator();
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          options={{
-            headerTransparent: true,
-            headerShown: false
-          }}
-          name="login" component={LoginPage}
-        />
-        <Stack.Screen
-          options={{
-            headerTransparent: true,
-            headerShown: false
-          }}
-          name="day" component={DayPage}
-        />
-        <Stack.Screen
-          options={{
-            headerTransparent: true,
-            headerShown: false
-          }}
-          name="days" component={DaysPage}
-        />
-        <Stack.Screen
-          options={{
-            headerTransparent: true,
-            headerShown: false
-          }}
-          name="register" component={RegisterPage}
-        />
-      </Stack.Navigator>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <Stack.Navigator>
+          <Stack.Screen
+            options={{
+              headerTransparent: true,
+              headerShown: false
+            }}
+            name="login" component={LoginPage}
+          />
+          <Stack.Screen
+            options={{
+              headerTransparent: true,
+              headerShown: false
+            }}
+            name="day" component={DayPage}
+          />
+          <Stack.Screen
+            options={{
+              headerTransparent: true,
+              headerShown: false
+            }}
+            name="days" component={DaysPage}
+          />
+          <Stack.Screen
+            options={{
+              headerTransparent: true,
+              headerShown: false
+            }}
+            name="register" component={RegisterPage}
+          />
+        </Stack.Navigator>
+      </NavigationContainer>
+    </Provider>
   );
 }
 

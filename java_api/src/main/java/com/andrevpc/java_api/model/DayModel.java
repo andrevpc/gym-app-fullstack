@@ -15,5 +15,6 @@ public class DayModel {
     @Id
     private String id;
     private String Name;
+    private List<String> Muscles;
     private List<String> Exercises;
 }

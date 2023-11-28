@@ -28,6 +28,12 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/user").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/user").permitAll()
+                        .requestMatchers(HttpMethod.DELETE, "/user/*").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/user/*").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/day/user/*").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/day").permitAll()
+                        .requestMatchers(HttpMethod.PUT, "/day/*").permitAll()
                         .anyRequest()
                         .authenticated())
                 .addFilterBefore(this.securityFilter, UsernamePasswordAuthenticationFilter.class)

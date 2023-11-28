@@ -42,12 +42,18 @@ public class DayController {
 
     @PutMapping("/{id}")
     public void putDay(@RequestBody DayModel newDay, @PathVariable String id) {
-        dayService.save((String) id, newDay.getName(), newDay.getExercises());
+        dayService.save((String) id, newDay.getName(), newDay.getMuscles(), newDay.getExercises());
     }
 
     @DeleteMapping("/{id}")
     public void deleteDay(@PathVariable String id) {
         dayService.delete(id);
+    }
+
+    @GetMapping("/user/{email}")
+    public List<DayModel> getByUser(@PathVariable String email) {
+        List<DayModel> listRes = dayService.findByUser(email);
+        return listRes;
     }
 
 }

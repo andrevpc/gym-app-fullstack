@@ -14,8 +14,13 @@ import bgImg from '../../../assets/images/background.png'
 import logoImg from '../../../assets/images/logo.png'
 import { TouchableOpacity } from 'react-native-web';
 import axios from "axios";
+import { authSlice } from '../../redux/authSlice';
+import { useDispatch } from 'react-redux';
 
 const LoginPage = (props) => {
+    const { setAuth } = authSlice.actions;
+    const dispatch = useDispatch();
+
     const [email, bindEmail, resetEmail] = useBind("")
     const [password, bindPassword, resetPassword] = useBind("")
 
@@ -35,7 +40,9 @@ const LoginPage = (props) => {
             if (!res.data) {
                 return;
             }
-            sessionStorage.setItem('token', res.data);
+            
+            dispatch(setAuth(res.data));
+            
             resetAll()
             props.navigation.navigate('days')
         } catch (error) {

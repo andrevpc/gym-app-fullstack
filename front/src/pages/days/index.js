@@ -1,18 +1,33 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import styles from "./styles";
 import chestImg from '../../../assets/images/chest.webp'
 import Card from '../../components/card';
 import axios from 'axios';
 import Header from '../../components/header';
+import { Button } from 'react-native';
+import DaysCards from '../../components/daysCards';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
 const DaysPage = () => {
-    console.log(sessionStorage.getItem("token"))
+    const { token } = useSelector((store) => store.auth);
+
+    var [days, setDays] = useState([])
+
+    useEffect(() => {
+        loadDays()
+    }, [])
+
     const loadDays = (async () => {
         try {
-            await axios.post("http://localhost:8080/auth/validate", {}, { headers: { 'Authorization': `Bearer ${sessionStorage.getItem("token")}` } }).then((res) => {
+            console.log(token);
+            await axios.post("http://localhost:8080/auth/validate", {}, { headers: { 'Authorization': `Bearer ${token}` } }).then((res) => {
                 console.log(res)
             });
+            const res = await axios.get("http://localhost:8080/day/user/a")
+            console.log(res.data)
+            setDays(res.data)
 
         } catch (error) {
             console.log(error)
@@ -22,8 +37,9 @@ const DaysPage = () => {
     return (
         <View style={styles.container}>
             <Header pageName='Treinos' />
-            <Card title="Treino A" body="Peito e Tríceps" img={require("../../../assets/images/chest.webp")} />
-            <Card title="Treino B" body="Costas e Bíceps" img={chestImg} />
+            {/* <Card title="Treino A" body="Peito e Tríceps" img={require("../../../assets/images/chest.webp")} />
+            <Card title="Treino B" body="Costas e Bíceps" img={chestImg} /> */}
+            <DaysCards days={days} />
         </View>
     );
 };
