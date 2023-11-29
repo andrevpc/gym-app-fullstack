@@ -1,19 +1,24 @@
 package com.andrevpc.java_api.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.andrevpc.java_api.model.DayModel;
 import com.andrevpc.java_api.model.ExerciseModel;
 import com.andrevpc.java_api.repository.ExerciseRepository;
+import com.andrevpc.java_api.repository.DayRepository;
 
 @Service
 public class ExerciseService {
 
     @Autowired
     private ExerciseRepository exerciseRepository;
+    @Autowired
+    private DayRepository dayRepository;
 
     public ExerciseModel save(ExerciseModel exerciseModel) {
         return this.exerciseRepository.save(exerciseModel);
@@ -34,6 +39,22 @@ public class ExerciseService {
 
     public void delete(String id) {
         this.exerciseRepository.deleteById(id);
+    }
+
+    public List<ExerciseModel> findByDay(String id) {
+        List<ExerciseModel> exerciseList = new ArrayList<ExerciseModel>();
+        var day = this.dayRepository.findById(id);
+
+        var exercises = day.get().getExercises();
+
+        for (String exercise : exercises) {
+            var option = this.exerciseRepository.findById(exercise);
+            if (option.isPresent()) {
+                exerciseList.add(option.get());
+            }
+        }
+
+        return exerciseList;
     }
 
 }

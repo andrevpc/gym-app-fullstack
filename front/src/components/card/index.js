@@ -7,7 +7,7 @@ const Card = ({ title, body, img }) => {
     return (
         <View style={styles.card}>
             <Image
-                source={img}
+                source={{uri: img}}
                 style={styles.img}
             />
             <View style={styles.info}>

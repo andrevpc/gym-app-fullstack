@@ -21,12 +21,11 @@ const DaysPage = () => {
 
     const loadDays = (async () => {
         try {
-            console.log(token);
-            await axios.post("http://localhost:8080/auth/validate", {}, { headers: { 'Authorization': `Bearer ${token}` } }).then((res) => {
-                console.log(res)
-            });
-            const res = await axios.get("http://localhost:8080/day/user/a")
-            console.log(res.data)
+            const userEmail = await axios.post("http://localhost:8080/auth/validate", {}, { headers: { 'Authorization': `Bearer ${token}` } })
+                // .then((res) => {
+                //     console.log(res)
+                // });
+            const res = await axios.get(`http://localhost:8080/day/user/${userEmail.data}`)
             setDays(res.data)
 
         } catch (error) {

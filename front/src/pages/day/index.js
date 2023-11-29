@@ -6,11 +6,11 @@ import Card from '../../components/card';
 import CardExercise from '../../components/cardExercise';
 import Header from '../../components/header';
 
-const DayPage = () => {
+const DayPage = (pageName, exercises) => {
     return (
         <>
         <View style={styles.container}>
-            <Header pageName='Treino A' />
+            <Header pageName={pageName} />
             <CardExercise title="Supino Reto com Barra" img={require("../../../assets/images/legExtension.webp")} />
         </View>
         </>
