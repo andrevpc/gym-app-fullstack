@@ -22,4 +22,5 @@ public class ExerciseModel {
     private Integer numSets;
     private Float weight;
     private Integer repetitionsPerSet;
+    private String img;
 }

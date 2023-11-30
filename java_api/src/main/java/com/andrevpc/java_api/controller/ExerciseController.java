@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.andrevpc.java_api.model.DayModel;
 import com.andrevpc.java_api.model.ExerciseModel;
 import com.andrevpc.java_api.service.ExerciseService;
 
@@ -43,8 +44,10 @@ public class ExerciseController {
     @PutMapping("/{id}")
     public void putExercise(@RequestBody ExerciseModel newExercise, @PathVariable String id) {
         exerciseService.save((String) id, (String) newExercise.getName(),
-        (String) newExercise.getMainMuscle(), (List<String>) newExercise.getAuxMuscle(), (String) newExercise.getEquipment(),
-        (Integer) newExercise.getNumSets(), (Float) newExercise.getWeight(), (Integer) newExercise.getRepetitionsPerSet());
+                (String) newExercise.getMainMuscle(), (List<String>) newExercise.getAuxMuscle(),
+                (String) newExercise.getEquipment(),
+                (Integer) newExercise.getNumSets(), (Float) newExercise.getWeight(),
+                (Integer) newExercise.getRepetitionsPerSet(), (String) newExercise.getImg());
     }
 
     @DeleteMapping("/{id}")
@@ -52,4 +55,9 @@ public class ExerciseController {
         exerciseService.delete(id);
     }
 
+    @GetMapping("/day/{email}")
+    public List<ExerciseModel> getByDay(@PathVariable String email) {
+        List<ExerciseModel> listRes = exerciseService.findByDay(email);
+        return listRes;
+    }
 }

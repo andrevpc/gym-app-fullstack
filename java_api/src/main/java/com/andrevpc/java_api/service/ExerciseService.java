@@ -25,8 +25,8 @@ public class ExerciseService {
     }
 
     public void save(String id, String name, String mainMuscle, List<String> auxMuscle,
-            String equipment, Integer numSets, Float weight, Integer repetitionsPerSet) {
-        this.exerciseRepository.save(new ExerciseModel(id, name, mainMuscle, auxMuscle, equipment, numSets, weight, repetitionsPerSet));
+            String equipment, Integer numSets, Float weight, Integer repetitionsPerSet, String img) {
+        this.exerciseRepository.save(new ExerciseModel(id, name, mainMuscle, auxMuscle, equipment, numSets, weight, repetitionsPerSet, img));
     }
 
     public List<ExerciseModel> findAll() {
