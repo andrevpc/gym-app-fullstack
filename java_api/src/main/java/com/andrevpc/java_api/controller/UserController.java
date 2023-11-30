@@ -30,8 +30,14 @@ public class UserController {
 
     @GetMapping("/{email}")
     public UserModel getUserByEmail(@PathVariable String email) {
-        UserModel listRes = userService.findByEmail(email);
-        return listRes;
+        UserModel res = userService.findByEmail(email);
+        return res;
+    }
+
+    @GetMapping("/isTrainer/{email}")
+    public Boolean getIsTrainerByEmail(@PathVariable String email) {
+        UserModel res = userService.findByEmail(email);
+        return res.getIsTrainer();
     }
 
     @PostMapping("")
