@@ -43,8 +43,13 @@ const LoginPage = (props) => {
             
             dispatch(setAuth(res.data));
             
+            const isTrainer = await axios.get(`http://localhost:8080/user/isTrainer/${email}`)
+            if(isTrainer.data)
+                console.log("AAAAAAAAAAAA")
+            else
+                props.navigation.navigate('days')
+            
             resetAll()
-            props.navigation.navigate('days')
         } catch (error) {
         }
     });
