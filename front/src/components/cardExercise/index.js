@@ -2,21 +2,17 @@ import React from 'react';
 import { View, Text, Image, Button, TouchableOpacity, TextInput } from 'react-native';
 import styles from './styles';
 
-const CardExercise = ({ title, img }) => {
+const CardExercise = ({ exercise }) => {
     return (
         <View style={styles.card}>
-            <Text style={styles.cardTitle}>{title}</Text>
+            <Text style={styles.cardTitle}>{exercise.name}</Text>
             <Image
-                source={img}
+                source={exercise.img}
                 style={styles.img}
             />
-            <View style={styles.info}>
-                <Text style={styles.cardBody}>Peso usado: </Text>
-                <TextInput
-                    keyboardType='numeric'
-                    style={styles.input}
-                />
-            </View>
+            <Text style={styles.cardTitle}>Séries: {exercise.numSets}x{exercise.repetitionsPerSet}</Text>
+            <Text style={styles.cardTitle}>Peso: {exercise.weight} kg</Text>
+            <Text style={styles.cardTitle}>Equipamento: {exercise.equipment}</Text>
         </View>
     );
 };

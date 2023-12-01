@@ -29,7 +29,7 @@ export default function DaysCards({ days }) {
             var img = 'https://cdn.shopify.com/s/files/1/1214/5580/files/Muscle_Group_Forearms.jpg?v=1601051687'
         //#endregion
         return (
-            <Card title={day.name} body={day.muscles[0]} key={day.id} img={img} />
+            <Card day={day} key={day.id} img={img} />
         )
     })
 };

@@ -55,9 +55,9 @@ public class ExerciseController {
         exerciseService.delete(id);
     }
 
-    @GetMapping("/day/{email}")
-    public List<ExerciseModel> getByDay(@PathVariable String email) {
-        List<ExerciseModel> listRes = exerciseService.findByDay(email);
+    @GetMapping("/day/{dayId}")
+    public List<ExerciseModel> getByDay(@PathVariable String dayId) {
+        List<ExerciseModel> listRes = exerciseService.findByDay(dayId);
         return listRes;
     }
 }
